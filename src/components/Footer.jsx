@@ -1,11 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import * as SiIcons from 'react-icons/si';
+import * as FaIcons from 'react-icons/fa';
 import { socialLinks, navItems } from '../data';
 
 const Footer = () => {
   const getIcon = (iconName) => {
-    const IconComponent = SiIcons[iconName];
+    const IconComponent = SiIcons[iconName] || FaIcons[iconName];
     return IconComponent ? <IconComponent /> : null;
   };
 
@@ -75,7 +76,7 @@ const Footer = () => {
                     y: -3,
                   }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-purple-400 hover:bg-purple-500/10 border border-gray-700 hover:border-purple-500/50 transition-all duration-300"
+                  className="w-10 h-10 bg-black rounded-lg flex items-center justify-center text-gray-400 hover:text-purple-400 hover:bg-purple-500/10 border border-gray-700 hover:border-purple-500/50 transition-all duration-300"
                 >
                   {getIcon(social.icon)}
                 </motion.a>

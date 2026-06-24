@@ -155,6 +155,7 @@ article {
 }
 
 @keyframes scrollPulse {
+
   0%,
   100% {
     opacity: 0.3;
@@ -238,6 +239,7 @@ article {
 
 /* ── Carousel Center-Axis Animations ── */
 @keyframes orbitalPulse {
+
   0%,
   100% {
     border-color: rgba(255, 0, 0, 0.12);
@@ -261,6 +263,7 @@ article {
 }
 
 @keyframes corePulse {
+
   0%,
   100% {
     box-shadow:

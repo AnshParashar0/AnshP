@@ -8,13 +8,17 @@ export const skills = [
   { name: 'React', icon: 'SiReact' },
   { name: 'Node.js', icon: 'SiNodedotjs' },
   { name: 'TypeScript', icon: 'SiTypescript' },
-  { name: 'Python', icon: 'SiPython' },
   { name: 'Tailwind CSS', icon: 'SiTailwindcss' },
   { name: 'MongoDB', icon: 'SiMongodb' },
+  { name: 'Framer Motion', icon: 'SiFramer' },
+  { name: 'GSAP', icon: 'SiGreensock' },
+  { name: 'Claude', icon: 'SiAnthropic' },
+  { name: 'Codex', icon: 'Code' },
+  { name: 'Prompting', icon: 'Terminal' },
+  { name: 'Agentic AI', icon: 'Brain' },
   { name: 'Git', icon: 'SiGit' },
   { name: 'Docker', icon: 'SiDocker' },
   { name: 'AWS', icon: 'SiAmazonaws' },
-  { name: 'PostgreSQL', icon: 'SiPostgresql' },
   { name: 'GraphQL', icon: 'SiGraphql' },
 ];
 
@@ -24,7 +28,7 @@ export const projects = [
     title: 'E-Commerce Platform',
     description: 'A full-stack e-commerce solution with real-time inventory management, secure payment processing, and responsive design.',
     techStack: ['React', 'Node.js', 'MongoDB', 'Stripe API'],
-    github: 'https://github.com/username/ecommerce-platform',
+    github: 'https://github.com/AnshParashar0/ecommerce-platform',
     liveDemo: 'https://ecommerce-demo.vercel.app',
     image: projectEcommerce,
   },
@@ -33,7 +37,7 @@ export const projects = [
     title: 'Task Management App',
     description: 'Collaborative task management application with drag-and-drop functionality, real-time updates, and team collaboration features.',
     techStack: ['TypeScript', 'React', 'Firebase', 'Tailwind CSS'],
-    github: 'https://github.com/username/task-manager',
+    github: 'https://github.com/AnshParashar0/task-manager',
     liveDemo: 'https://task-manager-demo.vercel.app',
     image: projectTaskmanager,
   },
@@ -42,7 +46,7 @@ export const projects = [
     title: 'Weather Dashboard',
     description: 'Interactive weather dashboard with location-based forecasts, historical data visualization, and severe weather alerts.',
     techStack: ['Vue.js', 'Express', 'OpenWeather API', 'Chart.js'],
-    github: 'https://github.com/username/weather-dashboard',
+    github: 'https://github.com/AnshParashar0/weather-dashboard',
     liveDemo: 'https://weather-dashboard-demo.vercel.app',
     image: projectWeather,
   },
@@ -51,16 +55,16 @@ export const projects = [
     title: 'Social Media Analytics',
     description: 'Analytics platform for social media managers to track engagement, analyze trends, and generate comprehensive reports.',
     techStack: ['React', 'Python', 'PostgreSQL', 'D3.js'],
-    github: 'https://github.com/username/social-analytics',
+    github: 'https://github.com/AnshParashar0/social-analytics',
     liveDemo: 'https://social-analytics-demo.vercel.app',
     image: projectAnalytics,
   },
 ];
 
 export const socialLinks = [
-  { name: 'GitHub', icon: 'SiGithub', url: 'https://github.com/username' },
-  { name: 'LinkedIn', icon: 'SiLinkedin', url: 'https://linkedin.com/in/username' },
-  { name: 'Twitter', icon: 'SiTwitter', url: 'https://twitter.com/username' },
+  { name: 'GitHub', icon: 'FaGithub', url: 'https://github.com/AnshParashar0' },
+  { name: 'LinkedIn', icon: 'FaLinkedin', url: 'https://www.linkedin.com/in/ansh-parashar-547803344/' },
+  { name: 'Twitter', icon: 'FaTwitter', url: 'https://twitter.com/username' },
 ];
 
 export const navItems = [

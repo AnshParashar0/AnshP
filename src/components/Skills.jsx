@@ -1,6 +1,8 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import * as SiIcons from 'react-icons/si';
+import * as FaIcons from 'react-icons/fa';
+import * as LucideIcons from 'lucide-react';
 import { skills } from '../data';
 
 /* ── Decode text effect ──────────────────────────────────────── */
@@ -96,10 +98,10 @@ const MatrixRain = React.memo(() => {
 });
 
 /* ── Main Skills component ───────────────────────────────────── */
-const ITEM_WIDTH = 100; // matches minWidth of each item
+const ITEM_WIDTH = 150; // matches minWidth of each item
 const TOTAL_ITEMS = skills.length;
 const TRACK_HALF = TOTAL_ITEMS * ITEM_WIDTH; // half the track (since we duplicate 2x for seamless loop)
-const DURATION = 28; // seconds for one full loop
+const DURATION = 12; // seconds for one full loop
 
 const Skills = () => {
   const wrapperRef = useRef(null);
@@ -139,7 +141,7 @@ const Skills = () => {
     }
 
     // Only activate if close enough to the center zone (~half item width)
-    if (closestDist < 55) {
+    if (closestDist < 80) {
       setActiveSkillIdx(closestIdx);
     } else {
       setActiveSkillIdx(-1);
@@ -198,7 +200,7 @@ const Skills = () => {
             left: '50%',
             top: 0,
             bottom: 0,
-            width: '90px',
+            width: '450px',
             transform: 'translateX(-50%)',
             zIndex: 15,
             pointerEvents: 'none',
@@ -262,7 +264,7 @@ const Skills = () => {
           {extendedSkills.map((skill, i) => {
             const realIdx = i % TOTAL_ITEMS;
             const isActive = realIdx === activeSkillIdx;
-            const IconComponent = SiIcons[skill.icon];
+            const IconComponent = SiIcons[skill.icon] || FaIcons[skill.icon] || LucideIcons[skill.icon];
 
             return (
               <div
