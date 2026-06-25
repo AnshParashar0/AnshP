@@ -1,13 +1,14 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import CarouselCard from './CarouselCard';
 import CarouselDots from './CarouselDots';
+import ProjectDetailsPanel from './ProjectDetailsPanel';
 
 const ProjectCarousel = ({ projects }) => {
   const trackRef = useRef(null);
   const [rotation, setRotation] = useState(0);
   const [activeIndex, setActiveIndex] = useState(0);
   const n = projects.length;
-  const radius = 200;
+  const radius = 300;
 
   const render = useCallback(
     (rot) => {
@@ -68,74 +69,86 @@ const ProjectCarousel = ({ projects }) => {
           height: '100vh',
           minHeight: '480px',
           display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
           overflow: 'hidden',
+          width: '100%',
         }}
+        className="flex-col lg:flex-row"
       >
-        {/* "Scroll to rotate" hint */}
-        <div
-          style={{
-            position: 'absolute',
-            top: '24px',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            textAlign: 'center',
-            zIndex: 10,
-          }}
-        >
-          <p
-            style={{
-              fontSize: '12px',
-              color: 'rgba(255, 255, 255, 0.3)',
-              margin: 0,
-              fontFamily: "'JetBrains Mono', monospace",
-              letterSpacing: '2px',
-              textTransform: 'uppercase',
-            }}
-          >
-            scroll to rotate
-          </p>
-          {/* Animated scroll indicator */}
+        {/* Left Column - Details Panel */}
+        <div className="w-full lg:w-1/2 h-full z-20 flex-shrink-0 bg-black/50 lg:bg-transparent backdrop-blur-sm lg:backdrop-blur-none">
+          <ProjectDetailsPanel projects={projects} activeIndex={activeIndex} />
+        </div>
+
+        {/* Right Column - Orbit Carousel */}
+        <div className="w-full lg:w-1/2 h-full flex items-center justify-center relative flex-shrink-0">
+          
+          {/* "Scroll to rotate" hint */}
           <div
             style={{
-              marginTop: '8px',
-              display: 'flex',
-              justifyContent: 'center',
+              position: 'absolute',
+              top: '40px',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              textAlign: 'center',
+              zIndex: 10,
             }}
+            className="hidden lg:block"
           >
+            <p
+              style={{
+                fontSize: '12px',
+                color: 'rgba(255, 255, 255, 0.3)',
+                margin: 0,
+                fontFamily: "'JetBrains Mono', monospace",
+                letterSpacing: '2px',
+                textTransform: 'uppercase',
+              }}
+            >
+              scroll to rotate
+            </p>
+            {/* Animated scroll indicator */}
             <div
               style={{
-                width: '1px',
-                height: '24px',
-                background: 'linear-gradient(to bottom, rgba(255, 0, 0, 0.5), transparent)',
-                animation: 'scrollPulse 2s ease-in-out infinite',
+                marginTop: '8px',
+                display: 'flex',
+                justifyContent: 'center',
               }}
-            />
+            >
+              <div
+                style={{
+                  width: '1px',
+                  height: '24px',
+                  background: 'linear-gradient(to bottom, rgba(255, 0, 0, 0.5), transparent)',
+                  animation: 'scrollPulse 2s ease-in-out infinite',
+                }}
+              />
+            </div>
+          </div>
+
+          {/* Orbit container */}
+          <div
+            style={{
+              position: 'relative',
+              width: '600px',
+              height: '600px',
+              perspective: '1000px',
+            }}
+          >
+            {projects.map((project, index) => (
+              <CarouselCard
+                key={project.id}
+                project={project}
+                style={getCardStyle(index)}
+                isActive={index === activeIndex}
+              />
+            ))}
+          </div>
+
+          {/* Dots */}
+          <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-10">
+            <CarouselDots count={n} activeIndex={activeIndex} />
           </div>
         </div>
-
-        {/* Orbit container */}
-        <div
-          style={{
-            position: 'relative',
-            width: '460px',
-            height: '460px',
-            perspective: '1000px',
-          }}
-        >
-          {projects.map((project, index) => (
-            <CarouselCard
-              key={project.id}
-              project={project}
-              style={getCardStyle(index)}
-              isActive={index === activeIndex}
-            />
-          ))}
-        </div>
-
-        {/* Dots */}
-        <CarouselDots count={n} activeIndex={activeIndex} />
       </div>
     </div>
   );

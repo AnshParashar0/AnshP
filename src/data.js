@@ -26,6 +26,9 @@ export const projects = [
   {
     id: 1,
     title: 'E-Commerce Platform',
+    oneLiner: 'Built to handle 10k+ SKUs with real-time inventory state.',
+    role: 'Started as a simple store, rebuilt it 3 times to perfect the payment flow and cart synchronization.',
+    challenges: ['Syncing inventory state across tabs in real-time', 'JWT refresh token rotation without breaking UX'],
     description: 'A full-stack e-commerce solution with real-time inventory management, secure payment processing, and responsive design.',
     techStack: ['React', 'Node.js', 'MongoDB', 'Stripe API'],
     github: 'https://github.com/AnshParashar0/ecommerce-platform',
@@ -35,6 +38,9 @@ export const projects = [
   {
     id: 2,
     title: 'Task Management App',
+    oneLiner: 'A collaborative workspace to keep teams moving fast.',
+    role: 'Designed the drag-and-drop interactions from scratch because the existing libraries felt too clunky.',
+    challenges: ['Optimistic UI updates for instant drag-and-drop', 'Conflict resolution for simultaneous offline edits'],
     description: 'Collaborative task management application with drag-and-drop functionality, real-time updates, and team collaboration features.',
     techStack: ['TypeScript', 'React', 'Firebase', 'Tailwind CSS'],
     github: 'https://github.com/AnshParashar0/task-manager',
@@ -44,6 +50,9 @@ export const projects = [
   {
     id: 3,
     title: 'Weather Dashboard',
+    oneLiner: 'Hyper-local weather visualization with historical trends.',
+    role: 'Integrated multiple weather APIs to ensure accuracy and built custom chart components for performance.',
+    challenges: ['Caching large datasets to prevent API rate limits', 'Smoothly animating weather transitions on the map'],
     description: 'Interactive weather dashboard with location-based forecasts, historical data visualization, and severe weather alerts.',
     techStack: ['Vue.js', 'Express', 'OpenWeather API', 'Chart.js'],
     github: 'https://github.com/AnshParashar0/weather-dashboard',
@@ -53,6 +62,9 @@ export const projects = [
   {
     id: 4,
     title: 'Social Media Analytics',
+    oneLiner: 'Turning messy social data into actionable insights.',
+    role: 'Wrote custom data aggregation scripts and designed the visualization layer to be heavily interactive.',
+    challenges: ['Rendering dense graphs without dropping frames', 'Securely managing OAuth tokens for multiple platforms'],
     description: 'Analytics platform for social media managers to track engagement, analyze trends, and generate comprehensive reports.',
     techStack: ['React', 'Python', 'PostgreSQL', 'D3.js'],
     github: 'https://github.com/AnshParashar0/social-analytics',

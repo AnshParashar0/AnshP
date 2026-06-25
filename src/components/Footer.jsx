@@ -64,7 +64,7 @@ const Footer = () => {
             className="text-center md:text-right"
           >
             <h4 className="text-lg font-semibold text-gray-100 mb-4">Connect With Me</h4>
-            <div className="flex justify-center md:justify-end space-x-3">
+            <div className="flex justify-center md:justify-end space-x-3 mb-4">
               {socialLinks.map((social) => (
                 <motion.a
                   key={social.name}
@@ -81,6 +81,10 @@ const Footer = () => {
                   {getIcon(social.icon)}
                 </motion.a>
               ))}
+            </div>
+            <div className="text-gray-400 text-sm flex flex-col items-center md:items-end">
+              <a href="mailto:parasharansh445@gmail.com" className="hover:text-purple-400 transition-colors">parasharansh445@gmail.com</a>
+              <a href="tel:8989239542" className="hover:text-purple-400 transition-colors mt-1">8989239541</a>
             </div>
           </motion.div>
         </div>

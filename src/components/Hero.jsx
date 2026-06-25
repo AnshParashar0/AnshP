@@ -265,7 +265,7 @@ const Hero = () => {
                 transition={{ delay: 0.5, duration: 0.6 }}
                 className="text-white/90"
               >
-                Hi, I&apos;m{' '}
+                Hi,I&apos;m{' '}
               </motion.span>
               <motion.span
                 initial={{ opacity: 0, x: 20 }}
