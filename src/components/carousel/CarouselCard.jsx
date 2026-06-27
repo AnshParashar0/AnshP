@@ -73,6 +73,16 @@ const CarouselCard = ({ project, style, isActive }) => {
         }}>
           {project.title}
         </h3>
+        <h5 style={{
+          fontWeight: 400,
+          fontSize: '14px',
+          margin: 0,
+          color: '#ff4444',
+          fontFamily: "'JetBrains Mono', monospace",
+            lineHeight: 1.2,
+        }}>
+          {project.titleLink}
+        </h5>
 
         {/* Tech Stack Pills */}
         <div style={{

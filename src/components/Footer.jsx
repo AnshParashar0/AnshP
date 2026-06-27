@@ -99,7 +99,7 @@ const Footer = () => {
         >
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
             <div className="text-gray-400 text-sm">
-              © {new Date().getFullYear()} John Doe. All rights reserved.
+              © {new Date().getFullYear()} AnshParashar_ All rights reserved.
             </div>
             
             <div className="flex items-center space-x-6 text-sm text-gray-400">

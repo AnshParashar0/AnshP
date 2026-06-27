@@ -52,9 +52,12 @@ const ProjectDetailsPanel = ({ projects, activeIndex }) => {
           </div>
 
           {/* Project Name */}
-          <h3 className="text-4xl md:text-5xl font-bold text-white mb-3 tracking-tight">
+          <h3 className="text-4xl md:text-3xl font-bold text-white mb-3 tracking-tight">
             {activeProject.title}
           </h3>
+          <h5 className="text-2xl md:text-3xl font-normal text-red-300 mb-3 tracking-tight">
+            {activeProject.titleLink}
+          </h5>
 
           {/* One-liner */}
           <p className="text-xl text-gray-300 font-medium mb-4">
@@ -107,7 +110,7 @@ const ProjectDetailsPanel = ({ projects, activeIndex }) => {
               href={activeProject.liveDemo} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="group flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm"
+              className="group flex items-center gap-2 text-red-700 hover:text-white transition-colors text-lg"
             >
               Live Demo
               <span className="transform group-hover:translate-x-1 transition-transform">→</span>

@@ -1,4 +1,5 @@
 import projectEcommerce from './assets/project-ecommerce.png';
+import icmsImage from './assets/icms.png';
 import projectTaskmanager from './assets/project-taskmanager.png';
 import projectWeather from './assets/project-weather.png';
 import projectAnalytics from './assets/project-analytics.png';
@@ -18,22 +19,23 @@ export const skills = [
   { name: 'Agentic AI', icon: 'Brain' },
   { name: 'Git', icon: 'SiGit' },
   { name: 'Docker', icon: 'SiDocker' },
-  { name: 'AWS', icon: 'SiAmazonaws' },
+  { name: 'AWS', icon: 'FaAws' },
   { name: 'GraphQL', icon: 'SiGraphql' },
 ];
 
 export const projects = [
   {
     id: 1,
-    title: 'E-Commerce Platform',
-    oneLiner: 'Built to handle 10k+ SKUs with real-time inventory state.',
-    role: 'Started as a simple store, rebuilt it 3 times to perfect the payment flow and cart synchronization.',
-    challenges: ['Syncing inventory state across tabs in real-time', 'JWT refresh token rotation without breaking UX'],
-    description: 'A full-stack e-commerce solution with real-time inventory management, secure payment processing, and responsive design.',
-    techStack: ['React', 'Node.js', 'MongoDB', 'Stripe API'],
-    github: 'https://github.com/AnshParashar0/ecommerce-platform',
-    liveDemo: 'https://ecommerce-demo.vercel.app',
-    image: projectEcommerce,
+    title: 'ICMS-',
+    titleLink: 'Infrastructure Complaint Management System',
+    oneLiner: 'Report Faster, Track Better, Resolve Campus Issues.',
+    role: 'Built the core backend infrastructure using Spring Boot and Agentic AI Models.',
+    challenges: ['Managing concurrent complaint submissions', 'Solving the issue of slow backend response using Caching and Load Balancing'],
+    description: 'ICMS is a full-stack complaint management platform where students can submit infrastructure complaints and administrators can monitor, prioritize, and resolve them with complete transparency.',
+    techStack: ['Spring Boot', 'React', 'MySQL', 'Tailwind CSS'],
+    github: 'https://github.com/AnshParashar0/ICMS',
+    liveDemo: 'https://icms-1.onrender.com/',
+    image: icmsImage,
   },
   {
     id: 2,
