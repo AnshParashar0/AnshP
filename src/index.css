@@ -61,6 +61,17 @@
   }
 }
 
+/* ── Mobile Snap Scrolling (only below lg breakpoint) ── */
+@media (max-width: 1023px) {
+  html {
+    scroll-snap-type: y proximity;
+  }
+
+  .mobile-snap-section {
+    scroll-snap-align: center;
+  }
+}
+
 @layer components {
   .gradient-text {
     background: linear-gradient(to right, #bf4040, #ff0000, #bf4040);
