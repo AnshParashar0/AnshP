@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 /* ── Typewriter hook ── */
 const useTypewriter = (text, speed = 25, trigger = true) => {
@@ -39,9 +39,13 @@ const TerminalCard = ({ project, index, isVisible }) => {
 
   return (
     <div
-      className="w-[90vw] sm:w-[75vw] max-w-[420px] flex flex-col rounded-xl overflow-hidden border border-white/10 bg-[#0c0c0c]"
+      className="flex flex-col rounded-xl overflow-hidden border border-white/10 bg-[#0c0c0c]"
       style={{
-        height: 'min(80vh, 680px)',
+        width: '85vw',
+        maxWidth: '380px',
+        height: 'min(72vh, 580px)',
+        flexShrink: 0,
+        scrollSnapAlign: 'center',
         boxShadow:
           '0 8px 40px rgba(255, 0, 0, 0.1), 0 2px 12px rgba(0,0,0,0.6)',
       }}
@@ -114,22 +118,24 @@ const TerminalCard = ({ project, index, isVisible }) => {
         </div>
 
         {/* Challenges */}
-        <div className="mt-1">
-          <div className="text-gray-500 text-[10px] tracking-widest uppercase mb-1.5">
-            <span className="text-red-500">❯</span> cat challenges.log
+        {project.challenges.length > 0 && (
+          <div className="mt-1">
+            <div className="text-gray-500 text-[10px] tracking-widest uppercase mb-1.5">
+              <span className="text-red-500">❯</span> cat challenges.log
+            </div>
+            <div className="space-y-1.5 pl-4">
+              {project.challenges.map((c, i) => (
+                <div
+                  key={i}
+                  className="flex items-start gap-1.5 text-gray-200 text-[11px]"
+                >
+                  <span className="text-yellow-500 shrink-0 mt-0.5">⚠</span>
+                  <span>{c}</span>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="space-y-1.5 pl-4">
-            {project.challenges.map((c, i) => (
-              <div
-                key={i}
-                className="flex items-start gap-1.5 text-gray-200 text-[11px]"
-              >
-                <span className="text-yellow-500 shrink-0 mt-0.5">⚠</span>
-                <span>{c}</span>
-              </div>
-            ))}
-          </div>
-        </div>
+        )}
 
         {/* Tech Stack */}
         <div className="mt-auto pt-3">
@@ -149,86 +155,111 @@ const TerminalCard = ({ project, index, isVisible }) => {
         </div>
 
         {/* CTAs */}
-        <div className="flex items-center gap-3 pt-3 border-t border-white/5 mt-2">
-          <a
-            href={project.liveDemo}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-[11px] text-red-400 hover:text-white transition-colors"
-          >
-            <span className="text-gray-500">$</span> open --live
-            <span>→</span>
-          </a>
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-[11px] text-gray-400 hover:text-white transition-colors"
-          >
-            <span className="text-gray-500">$</span> view --github
-          </a>
-        </div>
+        {project.github !== 'null' && project.liveDemo !== 'null' && (
+          <div className="flex items-center gap-3 pt-3 border-t border-white/5 mt-2">
+            <a
+              href={project.liveDemo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-[11px] text-red-400 hover:text-white transition-colors"
+            >
+              <span className="text-gray-500">$</span> open --live
+              <span>→</span>
+            </a>
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-[11px] text-gray-400 hover:text-white transition-colors"
+            >
+              <span className="text-gray-500">$</span> view --github
+            </a>
+          </div>
+        )}
       </div>
     </div>
   );
 };
 
-/* ── Main Snap Scroller ── */
+/* ── Main Horizontal Snap Scroller ── */
 const MobileSnapScroller = ({ projects }) => {
-  const [visibleIndex, setVisibleIndex] = useState(0);
-  const sectionRefs = useRef([]);
+  const scrollRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const idx = Number(entry.target.dataset.index);
-            if (!isNaN(idx)) setVisibleIndex(idx);
-          }
-        });
-      },
-      { threshold: 0.55 }
-    );
+    const container = scrollRef.current;
+    if (!container) return;
 
-    sectionRefs.current.forEach((el) => {
-      if (el) observer.observe(el);
-    });
+    const handleScroll = () => {
+      const scrollLeft = container.scrollLeft;
+      const containerWidth = container.offsetWidth;
+      const index = Math.round(scrollLeft / containerWidth);
+      setActiveIndex(Math.min(index, projects.length - 1));
+    };
 
-    return () => observer.disconnect();
-  }, [projects]);
+    container.addEventListener('scroll', handleScroll, { passive: true });
+    return () => container.removeEventListener('scroll', handleScroll);
+  }, [projects.length]);
+
+  const scrollToIndex = (index) => {
+    const container = scrollRef.current;
+    if (!container) return;
+    const cardWidth = container.offsetWidth;
+    container.scrollTo({ left: cardWidth * index, behavior: 'smooth' });
+  };
 
   return (
-    <>
-      {projects.map((project, index) => (
-        <div
-          key={project.id}
-          ref={(el) => (sectionRefs.current[index] = el)}
-          data-index={index}
-          className="mobile-snap-section w-full min-h-[100dvh] flex items-center justify-center relative bg-black"
-        >
+    <div className="relative w-full min-h-[85vh] flex flex-col items-center justify-center bg-black py-8">
+      {/* Section Header */}
+      <div className="text-center mb-6 px-4">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-2">
+          <span className="gradient-text">Featured Projects</span>
+        </h2>
+        <div className="w-12 h-1 bg-gradient-to-r from-red-600 to-red-400 rounded-full mx-auto" />
+      </div>
+
+      {/* Horizontal scroll container */}
+      <div
+        ref={scrollRef}
+        className="w-full flex items-center gap-5 overflow-x-auto px-[7.5vw] pb-4"
+        style={{
+          scrollSnapType: 'x mandatory',
+          WebkitOverflowScrolling: 'touch',
+          scrollbarWidth: 'none',
+          msOverflowStyle: 'none',
+        }}
+      >
+        {projects.map((project, index) => (
           <TerminalCard
+            key={project.id}
             project={project}
             index={index}
-            isVisible={visibleIndex === index}
+            isVisible={activeIndex === index}
           />
+        ))}
+      </div>
 
-          {/* Dot indicators */}
-          <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-20">
-            {projects.map((_, idx) => (
-              <div
-                key={idx}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
-                  idx === index
-                    ? 'bg-red-500 w-5'
-                    : 'bg-white/20 w-1.5'
-                }`}
-              />
-            ))}
-          </div>
-        </div>
-      ))}
-    </>
+      {/* Dot indicators */}
+      <div className="flex gap-2.5 mt-6">
+        {projects.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => scrollToIndex(idx)}
+            aria-label={`Go to project ${idx + 1}`}
+            className={`rounded-full transition-all duration-300 ${
+              idx === activeIndex
+                ? 'bg-red-500 w-6 h-2'
+                : 'bg-white/20 w-2 h-2 hover:bg-white/40'
+            }`}
+          />
+        ))}
+      </div>
+
+      {/* Hide scrollbar */}
+      <style>{`
+        div::-webkit-scrollbar { display: none; }
+      `}</style>
+    </div>
   );
 };
 

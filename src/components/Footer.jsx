@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { ArrowUp } from 'lucide-react';
 import * as SiIcons from 'react-icons/si';
 import * as FaIcons from 'react-icons/fa';
 import { socialLinks, navItems } from '../data';
@@ -124,9 +125,7 @@ const Footer = () => {
               className="flex items-center space-x-2 text-gray-400 hover:text-purple-400 transition-colors duration-300 text-sm"
             >
               <span>Back to top</span>
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
-              </svg>
+              <ArrowUp className="w-4 h-4" />
             </motion.button>
           </div>
         </motion.div>

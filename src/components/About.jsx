@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { ArrowRight, GraduationCap, User, Building2, MapPin } from 'lucide-react';
 import myPhoto from '../assets/myphotot.PNG';
 
 const About = () => {
@@ -97,9 +98,7 @@ const About = () => {
           >
             <a href="#resume" className="group flex items-center gap-2 text-white hover:text-red-500 transition-colors">
               View Resume 
-              <svg className="w-4 h-4 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
+              <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
             </a>
             <a href="#contact" className="group flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
               Let's Connect
@@ -144,9 +143,7 @@ const About = () => {
                   <div className="flex items-center gap-3 mb-6">
                     <div className="w-9 h-9 rounded-full bg-red-500/20 flex items-center justify-center shrink-0 border border-red-500/30">
                       {/* University/Education Icon */}
-                      <svg className="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/>
-                      </svg>
+                      <GraduationCap className="w-5 h-5 text-red-500" />
                     </div>
                     <div className="text-left font-jetbrains">
                       <p className="text-white text-sm font-bold tracking-wider leading-tight">MEDICAPS UNIV</p>
@@ -171,24 +168,17 @@ const About = () => {
                   {/* Details List */}
                   <div className="space-y-3 font-jetbrains">
                     <div className="flex items-center gap-4 text-gray-400">
-                      <svg className="w-[18px] h-[18px] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                      </svg>
+                      <User className="w-[18px] h-[18px] shrink-0" />
                       <span className="w-[1px] h-4 bg-white/10" />
                       <span className="text-gray-300 text-[13px] tracking-wider uppercase font-medium">B.Tech CSE</span>
                     </div>
                     <div className="flex items-center gap-4 text-gray-400">
-                      <svg className="w-[18px] h-[18px] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                      </svg>
+                      <Building2 className="w-[18px] h-[18px] shrink-0" />
                       <span className="w-[1px] h-4 bg-white/10" />
                       <span className="text-gray-300 text-[13px] tracking-wider uppercase font-medium">2024-2028</span>
                     </div>
                     <div className="flex items-center gap-4 text-gray-400">
-                      <svg className="w-[18px] h-[18px] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                      </svg>
+                      <MapPin className="w-[18px] h-[18px] shrink-0" />
                       <span className="w-[1px] h-4 bg-white/10" />
                       <span className="text-gray-300 text-[13px] tracking-wider uppercase font-medium">Indore, IN</span>
                     </div>

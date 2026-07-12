@@ -31,14 +31,14 @@ const CarouselCard = ({ project, style, isActive }) => {
       }}
     >
       {/* Project Image */}
-      <div style={{ position: 'relative', width: '100%', height: '480px', overflow: 'hidden', flexShrink: 0 }}>
+      <div style={{ position: 'relative',width: '100%', height: '480px', overflow: 'hidden', flexShrink: 0 }}>
         <img
           src={project.image}
           alt={project.title}
           style={{
             width: '100%',
             height: '100%',
-            objectFit: 'cover',
+            // objectFit: 'cover',
             display: 'block',
           }}
         />

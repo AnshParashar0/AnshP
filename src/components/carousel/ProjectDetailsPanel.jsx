@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 
 const ChallengeLine = ({ text }) => {
   return (
@@ -86,14 +87,14 @@ const ProjectDetailsPanel = ({ projects, activeIndex }) => {
             </h4>
             <div className="flex flex-wrap gap-2 mt-2">
               {activeProject.techStack.map((tech) => (
-                <span key={tech} className="px-3 py-1 text-xs font-jetbrains text-gray-300 bg-white/5 border border-white/10 rounded-full cursor-default">
+                <span key={tech} className="px-3 py-1 text-xs font-jetbrains text-gray-300 bg-white/5 border border-white/10 rounded-full cursor-default  hover:text-red-400 hover:border-red-500/50 hover:bg-red-500/10 hover:shadow-[0_0_15px_rgba(239,68,68,0.4)]">
                   {tech}
                 </span>
               ))}
             </div>
           </div>
 
-          {/* CTAs */}
+          {activeProject.github !== 'null' && activeProject.liveDemo !== 'null' && (
           <div className="flex items-center gap-6 font-jetbrains">
             <a 
               href={activeProject.github} 
@@ -102,9 +103,7 @@ const ProjectDetailsPanel = ({ projects, activeIndex }) => {
               className="group flex items-center gap-2 text-white hover:text-red-500 transition-colors border border-white/10 hover:border-red-500/30 px-5 py-2.5 rounded-lg bg-white/5 text-sm"
             >
               GitHub 
-              <svg className="w-4 h-4 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
+              <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
             </a>
             <a 
               href={activeProject.liveDemo} 
@@ -116,6 +115,7 @@ const ProjectDetailsPanel = ({ projects, activeIndex }) => {
               <span className="transform group-hover:translate-x-1 transition-transform">→</span>
             </a>
           </div>
+          )}
         </motion.div>
       </AnimatePresence>
     </div>
